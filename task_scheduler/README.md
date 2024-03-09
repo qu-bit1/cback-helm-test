@@ -1,3 +1,4 @@
+## README
 A task scheduler in python that interacts with the sqlite3 database. The service allows users to schedule tasks to be executed at a specified time.
 
 ### How to run:
