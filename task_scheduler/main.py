@@ -1,4 +1,3 @@
-from scheduler import run_scheduler
 from db import create_task, read_tasks, update_task, delete_task, initialize_database
 
 def print_menu():
@@ -7,8 +6,7 @@ def print_menu():
     print("2. Read Tasks")
     print("3. Update Task")
     print("4. Delete Task")
-    print("5. Run Scheduler")
-    print("6. Exit")
+    print("5. Exit")
 
 def handle_choice(choice):
     if choice == "1":
@@ -39,10 +37,6 @@ def handle_choice(choice):
         print("Task deleted successfully.")
 
     elif choice == "5":
-        print("Running Scheduler...")
-        run_scheduler()
-
-    elif choice == "6":
         print("Exiting Task Scheduler.")
         return False
 
