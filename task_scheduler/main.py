@@ -1,4 +1,4 @@
-from task_scheduler import run_scheduler
+from scheduler import run_scheduler
 from db import create_task, read_tasks, update_task, delete_task, initialize_database
 
 def print_menu():
