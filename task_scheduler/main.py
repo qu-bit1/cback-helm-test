@@ -12,7 +12,9 @@ def handle_choice(choice):
     if choice == "1":
         name = input("Enter task name: ")
         execution_time = input("Enter execution time (YYYY-MM-DD HH:MM:SS): ")
-        create_task(name, execution_time)
+        recurrence_type = input("Enter recurrence type (daily/weekly/monthly), if any: ")
+        recurrence_interval = input("Enter recurrence interval (e.g., for weekly: 1-7): ")
+        create_task(name, execution_time, recurrence_type, recurrence_interval)
         print("Task created successfully.")
 
     elif choice == "2":

@@ -17,7 +17,9 @@ Use one terminal to query the db i.e create, read etc. and one to run scheduler 
 - Each task have a unique id, name, and scheduled execution time.
 - Supports CRUD operations
 - Execute tasks at their scheduled times (i.e sleeps for a random amount of time from 1 to 5 seconds to simulate work)
+- Recurring task functionality
+
 ### File structure:
 - `db.py` - Basic db queries like create, update etc.
-- `scheduler.py` - To run scheduler
+- `scheduler.py` - To run scheduler also handles the recurring logics
 - `main.py` - Shows menu, main file to run and interact through CRUD ops with the service
