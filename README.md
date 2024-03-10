@@ -1,5 +1,6 @@
 ## README
-A task scheduler in python that interacts with the sqlite3 database. The service allows users to schedule tasks to be executed at a specified time.
+
+1. A task scheduler in python that interacts with the sqlite3 database. The service allows users to schedule tasks to be executed at a specified time.
 
 ### How to run:
 #### With RESTful API:
@@ -47,3 +48,29 @@ Use one terminal to query the db i.e create, read etc. and one to run scheduler 
 - `db.py` - Basic db queries like create, update etc.
 - `scheduler.py` - To run scheduler also handles the recurring logics
 - `main.py` - Shows menu, main file to run and interact through CRUD ops with the service
+
+---
+
+2. Dockerizing:
+- `app.Dockerfile` - Dockerfile to build a docker image for the flask server
+- `scheduler.Dockerfile` - Dockerfile to build a docker image for the scheduler
+- `docker-compose.yml` - Docker compose file to run both the images
+
+#### How to run:
+This will build & start both the containers(you'll see the output of the flask server), I have defined ports to be 8080:5000 . If facing problems please change those in `docker-compose.yml`.
+```
+docker compose up
+```
+
+For CRUD ops see the following examples:
+```
+curl -X POST -H "Content-Type: application/json" -d '{"name": "Task 1", "execution_time": "2024-03-10 20:00:00"}' http://localhost:8080/tasks
+
+curl -X POST -H "Content-Type: application/json" -d '{"name": "Task 2", "execution_time": "2024-03-10 21:00:00", "recurrence_type": "weekly", "recurrence_interval": 1}' http://localhost:8080/tasks
+
+curl -X GET http://localhost:8080/tasks
+
+curl -X GET http://localhost:8080/tasks/1
+```
+
+
