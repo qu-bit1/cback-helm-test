@@ -1,7 +1,8 @@
 import time
 import random
 import datetime
-from db import delete_task, cursor, update_task
+import os
+from db import delete_task, cursor, update_task, initialize_database
 
 # execute_task function
 def execute_task(task_id, name, execution_time, recurrence_type, recurrence_interval):
@@ -40,6 +41,9 @@ def run_scheduler():
             else:
                 delete_task(task_id)
         time.sleep(1)
+
+if not os.path.exists('tasks.db'):
+    initialize_database()
 
 print("running scheduler")
 run_scheduler()
