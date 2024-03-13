@@ -1,18 +1,18 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  flask-app:
-    build:
-      context: .
-      dockerfile: app.Dockerfile
-    ports:
-      - "8080:5000"
-    volumes:
-      - .:/app  # Mount the current directory into the container
+    flask-app:
+        build:
+            context: .
+            dockerfile: app.Dockerfile
+        ports:
+            - "8080:8080"
+        volumes:
+            - .:/app
 
-  scheduler:
-    build:
-      context: .
-      dockerfile: scheduler.Dockerfile
-    volumes:
-      - .:/app  # Mount the current directory into the container
+    scheduler:
+        build:
+            context: .
+            dockerfile: scheduler.Dockerfile
+        volumes:
+            - .:/app

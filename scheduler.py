@@ -1,8 +1,7 @@
 import time
 import random
 import datetime
-import os
-from db import delete_task, cursor, update_task, initialize_database
+from db import delete_task, cursor, update_task
 
 # execute_task function
 def execute_task(task_id, name, execution_time, recurrence_type, recurrence_interval):
@@ -30,6 +29,7 @@ def calculate_next_execution_time(execution_time, recurrence_type, recurrence_in
 def run_scheduler():
     while True:
         current_time = datetime.datetime.now()
+        # print(f"Scheduler running at {current_time}...")
         cursor.execute("SELECT id, name, execution_time, recurrence_type, recurrence_interval FROM tasks WHERE execution_time <= ?", (current_time,))
         tasks_to_execute = cursor.fetchall()
         for task in tasks_to_execute:
@@ -41,9 +41,6 @@ def run_scheduler():
             else:
                 delete_task(task_id)
         time.sleep(1)
-
-if not os.path.exists('tasks.db'):
-    initialize_database()
 
 print("running scheduler")
 run_scheduler()
